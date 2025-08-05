@@ -8,13 +8,12 @@ class Manager:
 
     def __init__(self):
         self.path = '../data/tweets_dataset.csv'
-        self.data_loader = DataLoader()
         self.data_analyzer = DataAnalyzer()
         self.report_builder = ReportBuilder()
 
     def _load_and_clean(self):
         """Loads the data from the csv file, cleans it, and exports it into a csv file."""
-        cleaned_data = self.data_analyzer.set_data(self.data_loader.load_from_csv(self.path))
+        cleaned_data = self.data_analyzer.set_data(DataLoader.load_from_csv(self.path))
         self.report_builder.export_cleaned_data(cleaned_data)
 
     def run(self):
